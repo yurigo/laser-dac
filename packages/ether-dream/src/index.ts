@@ -124,11 +124,11 @@ export class EtherDream extends Device {
 
   private convertPoint(p: IPoint) {
     return {
-      x: relativeToPosition(p.x),
-      y: relativeToPosition(p.y),
-      r: relativeToColor(p.r),
-      g: relativeToColor(p.g),
-      b: relativeToColor(p.b),
+      x: relativeToPosition(Math.max(0, Math.min(1, p.x))),
+      y: relativeToPosition(Math.max(0, Math.min(1, p.y))),
+      r: relativeToColor(Math.max(0, Math.min(1, p.r))),
+      g: relativeToColor(Math.max(0, Math.min(1, p.g))),
+      b: relativeToColor(Math.max(0, Math.min(1, p.b))),
     };
   }
 

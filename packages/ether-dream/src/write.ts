@@ -19,12 +19,13 @@ export function writeUnsignedInt16(n: number) {
 
 export function writeSignedInt16(n: number) {
   n = Math.round(n);
-  if (n <= -32767) {
-    n = 32768;
-  } else if (n < 0) {
-    n += 65535;
+  if (n < -32768) {
+    n = -32768;
   } else if (n > 32767) {
     n = 32767;
+  }
+  if (n < 0) {
+    n += 65536;
   }
   const a = (n >> 0) & 255;
   const b = (n >> 8) & 255;
